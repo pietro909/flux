@@ -4,3 +4,6 @@ lib
 website/src/flux/docs/
 website/core/metadata.js
 flow/include
+*.swp
+.idea
+elm-stuff
