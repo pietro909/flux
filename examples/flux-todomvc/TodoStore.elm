@@ -19,6 +19,12 @@ import TypeAliases exposing (TodoId)
 -- here it starts!
 
 -- MODEL
+type alias TodoItem =
+    { id : TodoId
+    , complete : Bool
+    , text : String
+    }
+
 type alias Model = 
     { todos : List String
     , uid : Int
