@@ -10,6 +10,12 @@ import Debug
 -- here it starts!
 
 -- MODEL
+init : Model
+init = 
+    { todos = []
+    , uid = 0
+    }
+
 update : Action -> Model -> Model
 update action model =
     let
