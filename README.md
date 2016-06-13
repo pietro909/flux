@@ -1,5 +1,5 @@
 # About this fork
-I forked flux in order to do the tutorial from [NoredInk](http://tech.noredink.com/post/126978281075/walkthrough-introducing-elm-to-a-js-web-app) about [Elm](http://elm-lang.org/).
+I forked flux in order to do the tutorial from [NoredInk](http://tech.noredink.com/post/126978281075/walkthrough-introducing-elm-to-a-js-web-app) about [Elm](http://elm-lang.org/). Since the tutorial doesn't cover Elm 0.17 I updated the code in order to have a working project.
 
 Please look at the [todomvc example](https://github.com/pietro909/flux/tree/elm-integration/examples/flux-todomvc) and see how the business logic of `TodoStore` has been encapsulated in an ELM module without breaking the application.
 
