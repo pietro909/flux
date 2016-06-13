@@ -5,9 +5,9 @@ Please look into the **elm-integration** branch in the [todomvc example](https:/
 
 Thanks to:
 
-    * [NoRedInk](http://tech.noredink.com/) for the great tutorial on the gradual integration of Elm into an existing React application.
-    * [tobi Vnext](https://tobivnext.wordpress.com/) who already converted the whole example to ELM 0.17 on [his repo](https://github.com/toburger/elm-todomvc/tree/feature/elm17)
-    * [Google Group](https://groups.google.com/forum/#!forum/elm-discuss)
+ * [NoRedInk](http://tech.noredink.com/) for the great tutorial on the gradual integration of Elm into an existing React application.
+ * [tobi Vnext](https://tobivnext.wordpress.com/) who already converted the whole example to ELM 0.17 on [his repo](https://github.com/toburger/elm-todomvc/tree/feature/elm17)
+ * [Google Group](https://groups.google.com/forum/#!forum/elm-discuss)
 
 # Flux
 An application architecture for React utilizing a unidirectional data flow.
