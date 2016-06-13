@@ -8,7 +8,6 @@ import Models exposing (..)
 import Debug
 import String
 
--- here it starts!
 
 -- MODEL
 init : Model
@@ -17,6 +16,8 @@ init =
     , uid = 0
     }
 
+
+-- UPDATE
 update : Action -> Model -> (Model, Cmd Action)
 update action model =
     case action of
@@ -75,11 +76,29 @@ update action model =
             in
                 (newModel, todoListChanges newModel.todos)
 
-        _ ->
-            let 
-                msg = Debug.log "action: " action
+        UndoComplete id ->
+            let
+                newModel =
+                    { model
+                        | todos = applyToItem (\x -> { x | complete = False }) id model.todos
+                    }
             in
-                (model, Cmd.none)
+                (newModel, todoListChanges newModel.todos)
+
+        ToggleCompleteAll ->
+            let
+                areAllComplete = List.foldr (\a -> (\b -> a.complete && b)) True model.todos
+                newModel =
+                    if areAllComplete then
+                        { model
+                            | todos = List.map (\a -> { a | complete = False }) model.todos
+                        }
+                    else
+                        { model
+                            | todos = List.map (\a -> { a | complete = True }) model.todos
+                        }
+            in
+                (newModel, todoListChanges newModel.todos)
 
 applyToItem : (TodoItem -> TodoItem) -> TodoId -> List TodoItem -> List TodoItem
 applyToItem f id list =
