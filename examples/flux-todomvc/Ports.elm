@@ -22,15 +22,12 @@ port todoListChanges : (List TodoItem) -> Cmd msg
 --}
 subscriptions : Model -> Sub Action
 subscriptions model =
-    let
-        d = Debug.log "sub -> " model
-    in
-        Sub.batch
-            [ dispatchCreate Create
-            , dispatchComplete Complete
-            , dispatchDestroy Destroy
-            , dispatchDestroyCompleted (always DestroyCompleted)
-            , dispatchToggleCompleteAll (always ToggleCompleteAll)
-            , dispatchUndoComplete UndoComplete
-            , dispatchUpdateText (uncurry UpdateText)
-            ]
+    Sub.batch
+        [ dispatchCreate Create
+        , dispatchComplete Complete
+        , dispatchDestroy Destroy
+        , dispatchDestroyCompleted (always DestroyCompleted)
+        , dispatchToggleCompleteAll (always ToggleCompleteAll)
+        , dispatchUndoComplete UndoComplete
+        , dispatchUpdateText (uncurry UpdateText)
+        ]
