@@ -1,28 +1,12 @@
 import Html.App as Html
 import Html exposing (..)
--- import Html.Attributes exposing (..)
--- import Html.Events exposing (..)
-import TodoStore 
 import Ports
 import Models exposing (Model)
 import Actions exposing (Action)
-
--- UPDATE
-update : Action -> Model -> (Model, Cmd Action)
-update msg model =
-    (model, Cmd.none)
-
-
-{--
-    let
-        model = TodoStore.update msg model
-    in
-       (model, Cmd.none)
---}
-
-init = TodoStore.init
-
-subscriptions = Ports.subscriptions
+import TypeAliases exposing (TodoId)
+import Ports 
+import Json.Decode
+import Debug
 
 main : Program Never
 main =
@@ -33,6 +17,31 @@ main =
         , subscriptions = subscriptions
         }
 
+
+-- MODEL
+
+init : (Model, Cmd Action)
+init = 
+    let
+        model = { todos = []
+                , uid = 0
+                }
+    in
+       (model, Cmd.none)
+
+
+-- UPDATE
+update : Action -> Model -> (Model, Cmd Action)
+update action model =
+    let
+        theAction = Debug.log "action: " action
+    in
+        (model, Cmd.none)
+
+
+-- SUBSCRIPTIONS
+subscriptions : Model -> Sub Action
+subscriptions = Ports.subscriptions
 
 view : Model -> Html Action
 view model = 
