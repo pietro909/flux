@@ -116,6 +116,37 @@ var TodoStore = assign({}, EventEmitter.prototype, {
   }
 });
 
+const defaultValues = {
+  dispatchCreate: "",
+  dispatchComplete: 0,
+  dispatchDestroy: 0,
+  dispatchDestroyCompleted: [],
+  dispatchToggleCompleteAll: [],
+  dispatchUndoComplete: 0,
+  dispatchUpdateText: [0, ""]
+};
+
+const ports = Elm.Main.worker(Elm.TodoStore /*, defaultValues*/).ports;
+ports.todoListChanges.subscribe((updatedTodoList) => {
+  // Convert from the flat list we're using in Elm
+  // to the keyed-by-id object the JS code expects.
+  _todos = {};
+
+  console.log("update from ELM", updatedTodoList);
+
+  updatedTodoList.forEach((item) => _todos[item.id] = item);
+
+  TodoStore.emitChange();
+
+});
+
+setTimeout(() => {
+
+ports.dispatchCreate.send(`Gotta port more JS to Elm!`);
+ports.dispatchUpdateText.send([1, "Ported!"]);
+ports.dispatchUpdateText.send([2, "FUCK!"]);
+}, 2000);
+
 // Register callback to handle all updates
 AppDispatcher.register(function(action) {
   var text;
