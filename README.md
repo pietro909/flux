@@ -1,3 +1,14 @@
+# About this fork
+I forked flux in order to do the tutorial from [NoredInk](http://tech.noredink.com/post/126978281075/walkthrough-introducing-elm-to-a-js-web-app) about [Elm](http://elm-lang.org/).
+
+Please look into the **elm-integration** branch in the [todomvc example](https://github.com/pietro909/flux/tree/elm-integration/examples/flux-todomvc) and see how the business logic of `TodoStore` has been encapsulated in an ELM module without breaking the application.
+
+Thanks to:
+
+    * [NoRedInk](http://tech.noredink.com/) for the great tutorial on the gradual integration of Elm into an existing React application.
+    * [tobi Vnext](https://tobivnext.wordpress.com/) who already converted the whole example to ELM 0.17 on [his repo](https://github.com/toburger/elm-todomvc/tree/feature/elm17)
+    * [Google Group](https://groups.google.com/forum/#!forum/elm-discuss)
+
 # Flux
 An application architecture for React utilizing a unidirectional data flow.
 
