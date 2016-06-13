@@ -43,8 +43,44 @@ update action model =
             in
                 (newModel, todoListChanges newModel.todos)                 
 
+        DestroyCompleted ->
+            let
+                notCompleted = List.filter (\todo -> todo.complete == False) model.todos
+                newModel =
+                    { model
+                        | todos = notCompleted
+                    }
+            in
+                (newModel, todoListChanges newModel.todos)
+
+        UpdateText id untrimmedText ->
+            let
+                text = String.trim untrimmedText
+                newModel = 
+                    if String.isEmpty text then 
+                       model
+                    else
+                        { model
+                        | todos = applyToItem (\x -> { x | text = text }) id model.todos
+                        }
+            in
+                (newModel, todoListChanges newModel.todos)
+
+        Complete id ->
+            let
+                newModel =
+                    { model
+                        | todos = applyToItem (\x -> { x | complete = True }) id model.todos
+                    }
+            in
+                (newModel, todoListChanges newModel.todos)
+
         _ ->
             let 
                 msg = Debug.log "action: " action
             in
                 (model, Cmd.none)
+
+applyToItem : (TodoItem -> TodoItem) -> TodoId -> List TodoItem -> List TodoItem
+applyToItem f id list =
+    List.map (\t -> if t.id == id then (f t) else t) list
