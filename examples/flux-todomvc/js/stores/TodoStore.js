@@ -140,24 +140,13 @@ ports.todoListChanges.subscribe((updatedTodoList) => {
 
 });
 
-setTimeout(() => {
-
-ports.dispatchCreate.send(`Gotta port more JS to Elm!`);
-ports.dispatchUpdateText.send([1, "Ported!"]);
-ports.dispatchUpdateText.send([2, "FUCK!"]);
-}, 2000);
-
 // Register callback to handle all updates
 AppDispatcher.register(function(action) {
   var text;
 
   switch(action.actionType) {
     case TodoConstants.TODO_CREATE:
-      text = action.text.trim();
-      if (text !== '') {
-        create(text);
-        TodoStore.emitChange();
-      }
+      ports.dispatchCreate.send(action.text)
       break;
 
     case TodoConstants.TODO_TOGGLE_COMPLETE_ALL:
@@ -188,8 +177,7 @@ AppDispatcher.register(function(action) {
       break;
 
     case TodoConstants.TODO_DESTROY:
-      destroy(action.id);
-      TodoStore.emitChange();
+      ports.dispatchDestroy.send(action.id);
       break;
 
     case TodoConstants.TODO_DESTROY_COMPLETED:

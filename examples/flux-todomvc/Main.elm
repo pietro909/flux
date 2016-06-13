@@ -7,6 +7,7 @@ import TypeAliases exposing (TodoId)
 import Ports 
 import Json.Decode
 import Debug
+import TodoStore
 
 main : Program Never
 main =
@@ -32,16 +33,7 @@ init =
 
 -- UPDATE
 update : Action -> Model -> (Model, Cmd Action)
-update action model =
-    let
-        theAction = Debug.log "action: " action
-        result = { model
-                    | uid = model.uid + 1
-                 }
-    in
-       (result, Ports.todoListChanges model.todos)
-        --(result, Cmd.none)
-
+update = TodoStore.update
 
 -- SUBSCRIPTIONS
 subscriptions : Model -> Sub Action
