@@ -35,8 +35,12 @@ update : Action -> Model -> (Model, Cmd Action)
 update action model =
     let
         theAction = Debug.log "action: " action
+        result = { model
+                    | uid = model.uid + 1
+                 }
     in
-        (model, Cmd.none)
+       (result, Ports.todoListChanges model.todos)
+        --(result, Cmd.none)
 
 
 -- SUBSCRIPTIONS
