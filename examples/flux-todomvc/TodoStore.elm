@@ -2,7 +2,7 @@ module TodoStore exposing (..)
 
 import Ports exposing (subscriptions, todoListChanges)
 import Json.Decode
-import TypeAliases exposing (TodoId)
+import TypeAliases exposing (TodoId, TodoItem)
 import Actions exposing (..)
 import Models exposing (..)
 import Debug
