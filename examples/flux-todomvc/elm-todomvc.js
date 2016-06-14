@@ -6766,6 +6766,10 @@ var _elm_lang$html$Html_App$beginnerProgram = function (_p1) {
 };
 var _elm_lang$html$Html_App$map = _elm_lang$virtual_dom$VirtualDom$map;
 
+var _user$project$TypeAliases$TodoItem = F3(
+	function (a, b, c) {
+		return {id: a, complete: b, text: c};
+	});
 
 var _user$project$Actions$UpdateText = F2(
 	function (a, b) {
@@ -6786,10 +6790,6 @@ var _user$project$Actions$Create = function (a) {
 	return {ctor: 'Create', _0: a};
 };
 
-var _user$project$Models$TodoItem = F3(
-	function (a, b, c) {
-		return {id: a, complete: b, text: c};
-	});
 var _user$project$Models$Model = F2(
 	function (a, b) {
 		return {todos: a, uid: b};
@@ -6865,7 +6865,7 @@ var _user$project$TodoStore$update = F2(
 							model.todos,
 							_elm_lang$core$Native_List.fromArray(
 								[
-									A3(_user$project$Models$TodoItem, model.uid, false, text)
+									A3(_user$project$TypeAliases$TodoItem, model.uid, false, text)
 								])),
 						uid: model.uid + 1
 					});
