@@ -1,12 +1,6 @@
 module Models exposing (..)
 
-import TypeAliases exposing (TodoId)
-
-type alias TodoItem =
-    { id : TodoId
-    , complete : Bool
-    , text : String
-    }
+import TypeAliases exposing (TodoId, TodoItem)
 
 type alias Model = 
     { todos : List TodoItem

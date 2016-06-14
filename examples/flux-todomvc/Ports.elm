@@ -1,8 +1,8 @@
 port module Ports exposing (..)
 
-import TypeAliases exposing (TodoId)
+import TypeAliases exposing (TodoId, TodoItem)
 import Actions exposing (..)
-import Models exposing (Model, TodoItem)
+import Models exposing (Model)
 
 -- incoming messages
 port dispatchCreate : (String -> msg) -> Sub msg
